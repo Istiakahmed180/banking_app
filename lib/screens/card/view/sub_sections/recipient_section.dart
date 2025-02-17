@@ -1,5 +1,7 @@
+import 'package:banking_app/screens/card/view/recipient_details/recipient_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class RecipientSection extends StatelessWidget {
   const RecipientSection({super.key});
@@ -63,45 +65,55 @@ class RecipientSection extends StatelessWidget {
         itemCount: recipients.length,
         itemBuilder: (context, index) {
           final recipient = recipients[index];
-          return Padding(
-            padding: const EdgeInsets.only(right: 20),
-            child: Column(
-              children: [
-                Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color:
+          return GestureDetector(
+            onTap: () {
+              Get.to(
+                () => RecipientDetailsScreen(
+                  recipientName: recipient["name"].toString(),
+                  recipientImage: recipient["image"].toString(),
+                ),
+              );
+            },
+            child: Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Column(
+                children: [
+                  Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color:
+                          recipient["icon"]!.isNotEmpty
+                              ? const Color(0xFF1B1B1B)
+                              : null,
+                      image:
+                          recipient["image"]!.isNotEmpty
+                              ? DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(recipient["image"]!),
+                              )
+                              : null,
+                      borderRadius: BorderRadius.circular(24),
+                    ),
+                    child:
                         recipient["icon"]!.isNotEmpty
-                            ? const Color(0xFF1B1B1B)
-                            : null,
-                    image:
-                        recipient["image"]!.isNotEmpty
-                            ? DecorationImage(
-                              fit: BoxFit.cover,
-                              image: NetworkImage(recipient["image"]!),
+                            ? Padding(
+                              padding: const EdgeInsets.all(17.0),
+                              child: SvgPicture.asset(recipient["icon"]!),
                             )
                             : null,
-                    borderRadius: BorderRadius.circular(24),
                   ),
-                  child:
-                      recipient["icon"]!.isNotEmpty
-                          ? Padding(
-                            padding: const EdgeInsets.all(17.0),
-                            child: SvgPicture.asset(recipient["icon"]!),
-                          )
-                          : null,
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  recipient["name"]!,
-                  style: const TextStyle(
-                    color: Color(0xFFFFFFFF),
-                    fontWeight: FontWeight.bold,
-                    fontSize: 14,
+                  const SizedBox(height: 8),
+                  Text(
+                    recipient["name"]!,
+                    style: const TextStyle(
+                      color: Color(0xFFFFFFFF),
+                      fontWeight: FontWeight.bold,
+                      fontSize: 14,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           );
         },
