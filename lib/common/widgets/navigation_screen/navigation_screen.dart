@@ -32,7 +32,7 @@ class _NavigationScreenState extends State<NavigationScreen> {
           case 3:
             return ProfileScreen();
           default:
-            return HomeScreen();
+            return CardScreen();
         }
       }),
       bottomNavigationBar: CustomNavigationItem(),
