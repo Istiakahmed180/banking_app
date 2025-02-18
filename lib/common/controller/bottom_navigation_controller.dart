@@ -9,10 +9,10 @@ class BottomNavigationController extends GetxController {
   final RxInt selectedIndex = 0.obs;
 
   final List<List<Widget>> pageStacks = [
-    [HomeScreen()],
     [CardScreen()],
-    [TransactionScreen()],
-    [ProfileScreen()],
+    [CardScreen()],
+    [CardScreen()],
+    [CardScreen()],
   ];
 
   void onTapItem(int index) {

@@ -5,5 +5,6 @@ class DarkTheme {
   ThemeData darkTheme(context)=> ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: AppColors.background,
+    fontFamily: "Gilroy"
   );
 }

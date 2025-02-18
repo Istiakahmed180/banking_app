@@ -11,7 +11,6 @@ class BalanceSection extends StatelessWidget {
           "Enter your amount",
           style: TextStyle(
             color: Color(0xFFFFFFFF).withOpacity(0.6),
-            fontWeight: FontWeight.normal,
             fontSize: 20,
           ),
         ),
@@ -20,26 +19,29 @@ class BalanceSection extends StatelessWidget {
           "\$1250.00",
           style: TextStyle(
             color: Color(0xFFFFFFFF),
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
             fontSize: 48,
           ),
         ),
         SizedBox(height: 20),
-        ElevatedButton(
-          onPressed: () {},
-          style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24),
+          child: ElevatedButton(
+            onPressed: () {},
+            style: ElevatedButton.styleFrom(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(24),
+              ),
+              backgroundColor: Color(0xFFB6EF11),
+              minimumSize: const Size(double.infinity, 48),
             ),
-            backgroundColor: Color(0xFFB6EF11),
-            minimumSize: const Size(double.infinity, 48),
-          ),
-          child: Text(
-            "Send",
-            style: TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
-              color: Color(0xFF000000),
+            child: Text(
+              "Send",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
+                color: Color(0xFF000000),
+              ),
             ),
           ),
         ),

@@ -52,7 +52,6 @@ class CardSection extends StatelessWidget {
           style: TextStyle(
             color: Color(0xFF6E6E6D),
             fontSize: 14,
-            fontWeight: FontWeight.normal,
           ),
         ),
         SizedBox(height: 4),
@@ -61,7 +60,7 @@ class CardSection extends StatelessWidget {
           style: TextStyle(
             color: Color(0xFF0D0D0C),
             fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ],
@@ -74,7 +73,7 @@ class CardSection extends StatelessWidget {
       style: TextStyle(
         color: Color(0xFF0D0D0C),
         fontSize: 14,
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w700,
       ),
     );
   }
@@ -88,7 +87,6 @@ class CardSection extends StatelessWidget {
           style: TextStyle(
             color: Color(0xFF6E6E6D),
             fontSize: 14,
-            fontWeight: FontWeight.normal,
           ),
         ),
         SizedBox(height: 4),
@@ -97,7 +95,7 @@ class CardSection extends StatelessWidget {
           style: TextStyle(
             color: Color(0xFF0D0D0C),
             fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
           ),
         ),
       ],

@@ -96,12 +96,12 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
           style: TextStyle(
             color: Color(0xFFFFFFFF),
             fontSize: 20,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
           ),
         ),
         const SizedBox(height: 20),
         _buildFilterChips(),
-        const SizedBox(height: 5),
+        const SizedBox(height: 8),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.5,
           child: ListView.builder(
@@ -118,6 +118,7 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
   Widget _buildActivityItem(Map<String, dynamic> activity) {
     return Column(
       children: [
+        SizedBox(height: 16,),
         Row(
           children: [
             Container(
@@ -140,9 +141,9 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
                     Text(
                       "To ${activity["recipient"]}",
                       style: const TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         color: Color(0xFFFFFFFF),
-                        fontWeight: FontWeight.w600,
+                        fontWeight: FontWeight.w700,
                       ),
                     ),
                     const SizedBox(width: 4),
@@ -151,9 +152,9 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
                       child: Text(
                         ".",
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 16,
                           color: Color(0xFFFFFFFF),
-                          fontWeight: FontWeight.w600,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ),
@@ -161,9 +162,9 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
                     Text(
                       activity["category"],
                       style: TextStyle(
-                        fontSize: 14,
+                        fontSize: 16,
                         color: const Color(0xFFFFFFFF).withOpacity(0.6),
-                        fontWeight: FontWeight.w400,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
                   ],
@@ -174,7 +175,6 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
                   style: TextStyle(
                     color: const Color(0xFFFFFFFF).withOpacity(0.8),
                     fontSize: 12,
-                    fontWeight: FontWeight.normal,
                   ),
                 ),
               ],
@@ -185,12 +185,13 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
               style: const TextStyle(
                 color: Color(0xFFFFFFFF),
                 fontSize: 16,
-                fontWeight: FontWeight.bold,
+                fontWeight: FontWeight.w700,
               ),
             ),
           ],
         ),
-        Divider(color: const Color(0xFFFFFFFF).withOpacity(0.2), height: 35),
+        SizedBox(height: 16,),
+        Divider(color: const Color(0xFFFFFFFF).withOpacity(0.2), height: 0),
       ],
     );
   }
@@ -198,39 +199,42 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
   Widget _buildFilterChips() {
     return SingleChildScrollView(
       scrollDirection: Axis.horizontal,
-      child: Row(
-        children:
-            activityList
-                .asMap()
-                .entries
-                .map(
-                  (entry) => Padding(
-                    padding: const EdgeInsets.only(right: 20),
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _selectedIndex = entry.key;
-                        });
-                      },
-                      child: _buildFilterChip(
-                        label: entry.value["label"],
-                        backgroundColor:
-                            _selectedIndex == entry.key
-                                ? const Color(0xFFB6EF11)
-                                : const Color(0xFF1B1B1B),
-                        textColor:
-                            _selectedIndex == entry.key
-                                ? const Color(0xFF0D0D0C)
-                                : const Color(0xFFFFFFFF),
-                        fontWeight:
-                            _selectedIndex == entry.key
-                                ? FontWeight.w600
-                                : FontWeight.w500,
+      child: SizedBox(
+        height: 24,
+        child: Row(
+          children:
+              activityList
+                  .asMap()
+                  .entries
+                  .map(
+                    (entry) => Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            _selectedIndex = entry.key;
+                          });
+                        },
+                        child: _buildFilterChip(
+                          label: entry.value["label"],
+                          backgroundColor:
+                              _selectedIndex == entry.key
+                                  ? const Color(0xFFB6EF11)
+                                  : const Color(0xFF1B1B1B),
+                          textColor:
+                              _selectedIndex == entry.key
+                                  ? const Color(0xFF0D0D0C)
+                                  : const Color(0xFFFFFFFF),
+                          fontWeight:
+                              _selectedIndex == entry.key
+                                  ? FontWeight.w700
+                                  : FontWeight.w500,
+                        ),
                       ),
                     ),
-                  ),
-                )
-                .toList(),
+                  )
+                  .toList(),
+        ),
       ),
     );
   }

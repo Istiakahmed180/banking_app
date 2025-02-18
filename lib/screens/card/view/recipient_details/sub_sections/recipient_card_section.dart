@@ -13,13 +13,16 @@ class RecipientCardSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        _buildSectionTitle("Send To"),
-        const SizedBox(height: 12),
-        _buildRecipientCard(),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 24),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildSectionTitle("Send To"),
+          const SizedBox(height: 12),
+          _buildRecipientCard(),
+        ],
+      ),
     );
   }
 
@@ -28,7 +31,7 @@ class RecipientCardSection extends StatelessWidget {
       title,
       style: const TextStyle(
         color: Color(0xFFFFFFFF),
-        fontWeight: FontWeight.bold,
+        fontWeight: FontWeight.w700,
         fontSize: 16,
       ),
     );
@@ -36,6 +39,7 @@ class RecipientCardSection extends StatelessWidget {
 
   Widget _buildRecipientCard() {
     return Container(
+      height: 78,
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
       decoration: BoxDecoration(
         color: const Color(0xFF1B1B1B),
@@ -76,7 +80,7 @@ class RecipientCardSection extends StatelessWidget {
           style: const TextStyle(
             fontSize: 16,
             color: Color(0xFFFFFFFF),
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w700,
           ),
         ),
         const SizedBox(height: 4),

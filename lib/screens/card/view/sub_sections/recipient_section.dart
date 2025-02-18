@@ -114,7 +114,7 @@ class RecipientSection extends StatelessWidget {
                         recipient["name"]!,
                         style: const TextStyle(
                           color: Color(0xFFFFFFFF),
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w700,
                           fontSize: 14,
                         ),
                       ),

@@ -31,11 +31,11 @@ class _CustomNavigationItemState extends State<CustomNavigationItem> {
           onTap: controller.onTapItem,
           selectedLabelStyle: const TextStyle(
             fontSize: 14,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           ),
           unselectedLabelStyle: const TextStyle(
             fontSize: 14,
-            fontWeight: FontWeight.w400,
+            fontWeight: FontWeight.w500,
           ),
           items: [
             BottomNavigationBarItem(
