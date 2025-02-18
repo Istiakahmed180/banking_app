@@ -1,16 +1,22 @@
+import 'package:banking_app/common/controller/bottom_navigation_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class HeaderSection extends StatelessWidget {
   const HeaderSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final BottomNavigationController controller = Get.put(
+      BottomNavigationController(),
+    );
+
     return Row(
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.pop(context);
+            controller.popPage();
           },
           child: Container(
             padding: const EdgeInsets.all(4),

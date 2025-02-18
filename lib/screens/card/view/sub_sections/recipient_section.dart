@@ -1,3 +1,4 @@
+import 'package:banking_app/common/controller/bottom_navigation_controller.dart';
 import 'package:banking_app/screens/card/view/recipient_details/recipient_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -65,8 +66,9 @@ class RecipientSection extends StatelessWidget {
             recipients.map((recipient) {
               return GestureDetector(
                 onTap: () {
-                  Get.to(
-                    () => RecipientDetailsScreen(
+                  final controller = Get.find<BottomNavigationController>();
+                  controller.pushPage(
+                    RecipientDetailsScreen(
                       recipientName: recipient["name"]!,
                       recipientImage: recipient["image"]!,
                     ),

@@ -242,7 +242,7 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
     required FontWeight fontWeight,
   }) {
     return Container(
-      height: 24,
+      height: 28,
       decoration: BoxDecoration(
         color: backgroundColor,
         borderRadius: BorderRadius.circular(16),
