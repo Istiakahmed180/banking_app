@@ -8,14 +8,11 @@ class HeaderSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final BottomNavigationController controller = Get.put(
-      BottomNavigationController(),
-    );
-
     return Row(
       children: [
         GestureDetector(
           onTap: () {
+            final controller = Get.find<BottomNavigationController>();
             controller.popPage();
           },
           child: Container(
