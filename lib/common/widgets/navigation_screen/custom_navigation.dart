@@ -24,63 +24,100 @@ class _CustomNavigationItemState extends State<CustomNavigationItem> {
           topLeft: Radius.circular(30),
           topRight: Radius.circular(30),
         ),
-        child: BottomNavigationBar(
-          backgroundColor: AppColors.bottomNav,
-          type: BottomNavigationBarType.fixed,
-          currentIndex: controller.selectedIndex.value,
-          onTap: controller.onTapItem,
-          selectedLabelStyle: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-          unselectedLabelStyle: const TextStyle(
-            fontSize: 14,
-            fontWeight: FontWeight.w500,
-          ),
-          items: [
-            BottomNavigationBarItem(
-              icon: Container(
-                margin: EdgeInsets.only(bottom: 8),
-                child: SvgPicture.asset(
-                  "assets/icons/nav_icons/home_nav.svg",
-                  width: 24,
-                  height: 24,
+        child: Stack(
+          children: [
+            SizedBox(
+              height: 80,
+              child: BottomNavigationBar(
+                backgroundColor: AppColors.bottomNav,
+                type: BottomNavigationBarType.fixed,
+                currentIndex: controller.selectedIndex.value,
+                onTap: controller.onTapItem,
+                selectedLabelStyle: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
                 ),
+                unselectedLabelStyle: const TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                ),
+                items: [
+                  BottomNavigationBarItem(
+                    icon: Container(
+                      margin: EdgeInsets.only(bottom: 8),
+                      child: SvgPicture.asset(
+                        "assets/icons/nav_icons/home_nav.svg",
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
+                    label: 'Home',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Container(
+                      margin: EdgeInsets.only(bottom: 8),
+                      child: SvgPicture.asset(
+                        "assets/icons/nav_icons/card_nav.svg",
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
+                    label: 'Card',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Container(
+                      margin: EdgeInsets.only(bottom: 8),
+                      child: SvgPicture.asset(
+                        "assets/icons/nav_icons/swap_nav.svg",
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
+                    label: 'Transaction',
+                  ),
+                  BottomNavigationBarItem(
+                    icon: Container(
+                      margin: EdgeInsets.only(bottom: 8),
+                      child: SvgPicture.asset(
+                        "assets/icons/nav_icons/user_nav.svg",
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
+                    label: 'Profile',
+                  ),
+                ],
               ),
-              label: 'Home',
             ),
-            BottomNavigationBarItem(
-              icon: Container(
-                margin: EdgeInsets.only(bottom: 8),
-                child: SvgPicture.asset(
-                  "assets/icons/nav_icons/card_nav.svg",
-                  width: 24,
-                  height: 24,
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: SizedBox(
+                height: 2,
+                child: Stack(
+                  children: List.generate(4, (index) {
+                    double itemWidth = MediaQuery.of(context).size.width / 4;
+                    double indicatorWidth = 33;
+                    double startPosition =
+                        (index * itemWidth) +
+                        ((itemWidth - indicatorWidth) / 2);
+
+                    return Positioned(
+                      left: startPosition,
+                      child: AnimatedContainer(
+                        duration: Duration(milliseconds: 200),
+                        height: 2,
+                        width: indicatorWidth,
+                        color:
+                            controller.selectedIndex.value == index
+                                ? Color(0xFFB6EF11)
+                                : Colors.transparent,
+                      ),
+                    );
+                  }),
                 ),
               ),
-              label: 'Card',
-            ),
-            BottomNavigationBarItem(
-              icon: Container(
-                margin: EdgeInsets.only(bottom: 8),
-                child: SvgPicture.asset(
-                  "assets/icons/nav_icons/swap_nav.svg",
-                  width: 24,
-                  height: 24,
-                ),
-              ),
-              label: 'Transaction',
-            ),
-            BottomNavigationBarItem(
-              icon: Container(
-                margin: EdgeInsets.only(bottom: 8),
-                child: SvgPicture.asset(
-                  "assets/icons/nav_icons/user_nav.svg",
-                  width: 24,
-                  height: 24,
-                ),
-              ),
-              label: 'Profile',
             ),
           ],
         ),
