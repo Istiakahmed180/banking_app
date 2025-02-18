@@ -58,67 +58,70 @@ class RecipientSection extends StatelessWidget {
       },
     ];
 
-    return SizedBox(
-      height: 100,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: recipients.length,
-        itemBuilder: (context, index) {
-          final recipient = recipients[index];
-          return GestureDetector(
-            onTap: () {
-              Get.to(
-                () => RecipientDetailsScreen(
-                  recipientName: recipient["name"].toString(),
-                  recipientImage: recipient["image"].toString(),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children:
+            recipients.map((recipient) {
+              return GestureDetector(
+                onTap: () {
+                  Get.to(
+                    () => RecipientDetailsScreen(
+                      recipientName: recipient["name"]!,
+                      recipientImage: recipient["image"]!,
+                    ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Column(
+                    children: [
+                      Container(
+                        width: 60,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color:
+                              recipient["icon"]!.isNotEmpty
+                                  ? const Color(0xFF1B1B1B)
+                                  : null,
+                          image:
+                              recipient["image"]!.isNotEmpty
+                                  ? DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(recipient["image"]!),
+                                    onError: (exception, stackTrace) {
+                                      // Handle image loading errors
+                                      debugPrint(
+                                        "Failed to load image: $exception",
+                                      );
+                                    },
+                                  )
+                                  : null,
+                          borderRadius: BorderRadius.circular(24),
+                        ),
+                        child:
+                            recipient["icon"]!.isNotEmpty
+                                ? Padding(
+                                  padding: const EdgeInsets.all(17.0),
+                                  child: SvgPicture.asset(recipient["icon"]!),
+                                )
+                                : null,
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        recipient["name"]!,
+                        style: const TextStyle(
+                          color: Color(0xFFFFFFFF),
+                          fontWeight: FontWeight.bold,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Column(
-                children: [
-                  Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      color:
-                          recipient["icon"]!.isNotEmpty
-                              ? const Color(0xFF1B1B1B)
-                              : null,
-                      image:
-                          recipient["image"]!.isNotEmpty
-                              ? DecorationImage(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(recipient["image"]!),
-                              )
-                              : null,
-                      borderRadius: BorderRadius.circular(24),
-                    ),
-                    child:
-                        recipient["icon"]!.isNotEmpty
-                            ? Padding(
-                              padding: const EdgeInsets.all(17.0),
-                              child: SvgPicture.asset(recipient["icon"]!),
-                            )
-                            : null,
-                  ),
-                  const SizedBox(height: 8),
-                  Text(
-                    recipient["name"]!,
-                    style: const TextStyle(
-                      color: Color(0xFFFFFFFF),
-                      fontWeight: FontWeight.bold,
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
+            }).toList(),
       ),
     );
-    ;
   }
 }

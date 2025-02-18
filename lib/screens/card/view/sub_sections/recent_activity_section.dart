@@ -101,7 +101,7 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
         ),
         const SizedBox(height: 20),
         _buildFilterChips(),
-        const SizedBox(height: 24),
+        const SizedBox(height: 5),
         SizedBox(
           height: MediaQuery.of(context).size.height * 0.5,
           child: ListView.builder(
@@ -190,7 +190,7 @@ class _RecentActivitySectionState extends State<RecentActivitySection> {
             ),
           ],
         ),
-        Divider(color: const Color(0xFFFFFFFF).withOpacity(0.2), height: 30),
+        Divider(color: const Color(0xFFFFFFFF).withOpacity(0.2), height: 35),
       ],
     );
   }
